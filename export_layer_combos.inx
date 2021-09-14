@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+    <_name>Export Layer Combos</_name>
+    <id>com.ftlgoats.combo.layers</id>
+    <dependency type="executable" location="extensions">export_layer_combos.py</dependency>
+	<param name="help" type="description">Export combinations of layers to an image in bulk. The tool looks for the 'export-layer-combo' attribute on your layers and then parses them to do combination exports with them. The format of the value for this attribute is '[group],[selector]', where '[selector]' can be one of 'combo-children', 'visible', or 'hidden'. You can also chain multiple '[group],[selector]' values by separating them with a semicolon.</param>
+    <param name="path" type="string" _gui-text="Choose path to export">~/</param>
+    <param name="filetype" type="optiongroup" gui-text="Export layers as..." appearance="minimal">
+       <option value="jpeg">JPEG</option>
+       <option selected="selected" value="png">PNG</option>
+    </param>
+    <param name="dpi" type="float" min="0.0" max="1000.0" _gui-text="Export DPI">300</param>
+    <param name="ascii" type="boolean" _gui-text="Remove Special Characters in Layer Names">false</param>
+    <param name="lower" type="boolean" _gui-text="Lowercase Names">false</param>
+    <param name="negatives" type="boolean" _gui-text="Include Names of Forced Hidden Layers">false</param>
+    <param name="debug" type="boolean" _gui-text="Show debug messages">false</param>
+    <param name="one" type="boolean" _gui-text="Only Process First Combo">false</param>
+    <param name="dry" type="boolean" _gui-text="Dry Run">false</param>
+    <effect needs-live-preview="false">
+        <object-type>all</object-type>
+        <effects-menu>
+            <submenu _name="Export" />
+        </effects-menu>
+    </effect>
+    <script>
+        <command reldir="extensions" interpreter="python">export_layer_combos.py</command>
+    </script>
+</inkscape-extension>
