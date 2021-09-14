@@ -34,8 +34,8 @@ When you export images, the name of the image is of the form `[group]-[layer-nam
 When you run the tool, it will generate the following images:
 
 ```
-front-layer1A.png       (layer3 and layer4 are hidden)
-front-layer1B.png       (layer3 and layer4 are hidden)
+front-layer1A.png       (layer1B, layer3, and layer4 are hidden)
+front-layer1B.png       (layer1A, layer3, and layer4 are hidden)
 back-layer2-layer4.png  (layer1 hidden)
                         (NOTE: visibility of layer5 is not changed for any export)
 ```
@@ -58,9 +58,9 @@ Here is an example of how we could organize our Inkscape SVG around the differen
 
 <img width="321" alt="Example Layer Setup" src="https://user-images.githubusercontent.com/7967134/133210130-24764841-78a1-4309-97fb-eac1241a50e1.png">
 
-To "make" an individual card, we then just hide/unhide certain combinations of layers to make the card. However, this would be tedious for any normal-sized deck (54 cards for a standard playing deck, plus the backside). So let's add the export attributes to the layers we want to combine together.
+To "make" an individual card, we then just hide/unhide certain combinations of layers to make the final image. However, this would be tedious for any normal-sized deck (54 cards for a standard playing deck, plus the backside). So let's add the export attributes to the layers we want to combine together. Here is an example of setting the `export-layer-combo` attribute on the `Card Back` layer:
 
-<img width="323" alt="Setting Attribute on Card Back" src="https://user-images.githubusercontent.com/7967134/133215234-022e403b-c253-4c2e-b835-ff062a71dd32.png">
+<img width="423" alt="Setting Attribute on Card Back" src="https://user-images.githubusercontent.com/7967134/133280864-7087963c-ba85-422b-88e8-f6ae3084e8ce.png">
 
 Here are the settings per layer:
 
