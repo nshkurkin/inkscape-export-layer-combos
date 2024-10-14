@@ -22,6 +22,35 @@
 #  SOFTWARE.
 #
 #######################################################################################################################
+# About this fork made 2024-10-10
+# Author: Bengt Ragnemalm
+# Changes: This fork is a fix according to Issue #1. It's broken functionality since InkScape 1.2
+# The fix included the replacement of code according to the suggested fix PLUS replacement of the Image Magick command
+# "convert" that in recent versions has been changed to "magick convert".
+# Note that the plugin requires install if Image Magick. (Hint: Beware when downloading Image Magick, there are a lot
+# of problematic ads on the project page. Make sure to only click on true download links).
+#
+# Use: Nothing changed.
+# Tip for quick use: If you already has a file with cards consisting of one layer per card and one or more common
+# background layers the described method is is an easy way to with minimal effort add typical functionality.
+# (Much more advanced combinations can be made). The command will export each card as an individual JPEG to a folder.
+# 1. Create a new layer that will act as a common top layer.
+# 2. Move all card layers as sublayers to the common top layer.
+# 2. To the new Top layer, using XML editor, add attribute with Name=export-layer-combos and Value=front,combo-children
+# "front" can be any word. Note: No space between , and combo-children
+# 3. For convenience, put all common background layers in another layer.
+# 4. To use, hide all card layers and show all background layers that you want included onm the cards.
+# 5. Run the command (Extensions -> Export -> Export Layer Combos).
+#
+# Since you already have Image Magick you can if you want, use a command to pack the output files into sets of 2x4 to a
+# A4 page as JPEG files or one pdf.
+# Run the command from a command prompt
+# pdf output: magick montage *.jpg -rotate 90 -tile 2x3 -geometry +0+0 -page A4 output.pdf
+# JPEG output: magick montage *.jpg -rotate 90 -tile 2x3 -geometry +0+0 -resize 2480x3508 output.jpg
+# It's possible to add this functionality as options directly into the plugin but I wanted to change as little as
+# possible.
+#######################################################################################################################
+#
 # NOTES
 #
 # Developing extensions:
@@ -85,6 +114,32 @@ class ExportSpec(object):
 
         return result
 
+class CustomNamedTemporaryFile: 
+    """
+    MODIFIED FROM : https://stackoverflow.com/questions/23212435/permission-denied-to-write-to-my-temporary-file
+    This custom implementation is needed because of the following limitation of tempfile.NamedTemporaryFile:
+
+    > Whether the name can be used to open the file a second time, while the named temporary file is still open,
+    > varies across platforms (it can be so used on Unix; it cannot on Windows NT or later).
+    """
+    def __init__(self, mode='wb', suffix="", delete=True):
+        self._mode = mode
+        self._delete = delete
+        self.suffix = suffix
+
+    def __enter__(self):
+        # Generate a random temporary file name
+        file_name = os.path.join(tempfile.gettempdir(), os.urandom(24).hex())+self.suffix
+        # Ensure the file is created
+        open(file_name, "x").close()
+        # Open the file in the given mode
+        self._tempFile = open(file_name, self._mode)
+        return self._tempFile
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self._tempFile.close()
+        if self._delete:
+            os.remove(self._tempFile.name)
 
 class LayerRef(object):
     """A wrapper around an Inkscape XML layer object plus some helper data for doing combination exports."""
@@ -243,23 +298,60 @@ class ComboExport(inkex.Effect):
                     logit(f"Creating directory path {output_path} because it does not exist")
                     os.makedirs(os.path.join(output_path))
 
-                with tempfile.NamedTemporaryFile(suffix=".svg") as fp_svg:
-                    layer_dest_svg_path = fp_svg.name
-                    logit(f"Writing SVG to temporary location {layer_dest_svg_path}")
-                    self.export_layers(layer_dest_svg_path, show, hide)
+                # If OS is Windows, use a the CustomNamedTemporaryFile.
+                if os.name == "nt":
+                    with CustomNamedTemporaryFile(suffix=".svg") as fp_svg:
+                        layer_dest_svg_path = fp_svg.name
+                        logit(f"Writing SVG to temporary location {layer_dest_svg_path}")
+                        self.export_layers(layer_dest_svg_path, show, hide)
 
-                    if self.options.filetype == "jpeg":
-                        with tempfile.NamedTemporaryFile(suffix=".png") as fp_png:
-                            logit(f"Writing PNG to temporary location {fp_png.name}")
-                            self.export_to_png(layer_dest_svg_path, fp_png.name)
-                            layer_dest_jpg_path = os.path.join(output_path, f"{label}.jpg")
-                            logit(f"Writing JPEG to final location {layer_dest_jpg_path}")
-                            self.convert_png_to_jpeg(fp_png.name, layer_dest_jpg_path)
-                    else:
-                        layer_dest_png_path = os.path.join(output_path, f"{label}.png")
-                        logit(f"Writing PNG to final location {layer_dest_png_path}")
-                        self.export_to_png(layer_dest_svg_path, layer_dest_png_path)
-                
+                        if self.options.filetype == "jpeg":
+                            with CustomNamedTemporaryFile(suffix=".png") as fp_png:
+                                logit(f"Writing PNG to temporary location {fp_png.name}")
+                                self.export_to_png(layer_dest_svg_path, fp_png.name)
+                                layer_dest_jpg_path = os.path.join(output_path, f"{label}.jpg")
+                                logit(f"Writing JPEG to final location {layer_dest_jpg_path}")
+                                self.convert_png_to_jpeg(fp_png.name, layer_dest_jpg_path)
+                        else:
+                            layer_dest_png_path = os.path.join(output_path, f"{label}.png")
+                            logit(f"Writing PNG to final location {layer_dest_png_path}")
+                            self.export_to_png(layer_dest_svg_path, layer_dest_png_path)
+                else : # Otherwise, use the standard NamedTemporaryFile.
+                    with tempfile.NamedTemporaryFile(suffix=".svg") as fp_svg:
+                        layer_dest_svg_path = fp_svg.name
+                        logit(f"Writing SVG to temporary location {layer_dest_svg_path}")
+                        self.export_layers(layer_dest_svg_path, show, hide)
+
+                        if self.options.filetype == "jpeg":
+                            with tempfile.NamedTemporaryFile(suffix=".png") as fp_png:
+                                logit(f"Writing PNG to temporary location {fp_png.name}")
+                                self.export_to_png(layer_dest_svg_path, fp_png.name)
+                                layer_dest_jpg_path = os.path.join(output_path, f"{label}.jpg")
+                                logit(f"Writing JPEG to final location {layer_dest_jpg_path}")
+                                self.convert_png_to_jpeg(fp_png.name, layer_dest_jpg_path)
+                        else:
+                            layer_dest_png_path = os.path.join(output_path, f"{label}.png")
+                            logit(f"Writing PNG to final location {layer_dest_png_path}")
+                            self.export_to_png(layer_dest_svg_path, layer_dest_png_path)
+
+
+#                with tempfile.NamedTemporaryFile(suffix=".svg") as fp_svg:
+#                    layer_dest_svg_path = fp_svg.name
+#                    logit(f"Writing SVG to temporary location {layer_dest_svg_path}")
+#                    self.export_layers(layer_dest_svg_path, show, hide)
+#
+#                    if self.options.filetype == "jpeg":
+#                        with tempfile.NamedTemporaryFile(suffix=".png") as fp_png:
+#                            logit(f"Writing PNG to temporary location {fp_png.name}")
+#                            self.export_to_png(layer_dest_svg_path, fp_png.name)
+#                            layer_dest_jpg_path = os.path.join(output_path, f"{label}.jpg")
+#                            logit(f"Writing JPEG to final location {layer_dest_jpg_path}")
+#                            self.convert_png_to_jpeg(fp_png.name, layer_dest_jpg_path)
+#                    else:
+#                        layer_dest_png_path = os.path.join(output_path, f"{label}.png")
+#                        logit(f"Writing PNG to final location {layer_dest_png_path}")
+#                        self.export_to_png(layer_dest_svg_path, layer_dest_png_path)
+#                
                 # Break on first output for debug purposes
                 if self.options.one:
                     break
@@ -312,7 +404,8 @@ class ComboExport(inkex.Effect):
         command = f"inkscape --export-type=\"png\" -d {self.options.dpi} --export-filename=\"{output_path}\" \"{svg_path}\""
         logit(f"Running command '{command}'")
        
-        p = subprocess.Popen(command.encode("utf-8"), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+#        p = subprocess.Popen(command.encode("utf-8"), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         p.wait()
         output, err = p.communicate()
         logit(f"stdout:\n{output}")
@@ -320,10 +413,11 @@ class ComboExport(inkex.Effect):
 
     def convert_png_to_jpeg(self, png_path: str, output_path: str):
         logit = logging.warning if self.options.debug else logging.info
-        command = f"convert \"{png_path}\" \"{output_path}\""
+        command = f"magick convert \"{png_path}\" \"{output_path}\""
         logit(f"Running command '{command}'")
 
-        p = subprocess.Popen(command.encode("utf-8"), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+#        p = subprocess.Popen(command.encode("utf-8"), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         p.wait()
         output, err = p.communicate()
         logit(f"stdout:\n{output}")
