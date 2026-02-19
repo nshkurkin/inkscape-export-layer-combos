@@ -24,39 +24,82 @@
      inkscape:deskcolor="#252525"
      inkscape:document-units="mm"
      inkscape:zoom="3.2729938"
-     inkscape:cx="97.464284"
-     inkscape:cy="214.02424"
+     inkscape:cx="97.464285"
+     inkscape:cy="214.177"
      inkscape:window-width="3840"
      inkscape:window-height="2054"
      inkscape:window-x="2549"
      inkscape:window-y="-11"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer13" />
+     inkscape:current-layer="layer17"
+     inkscape:export-bgcolor="#ffffffff" />
   <defs
      id="defs1" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer17"
+     inkscape:label="Background">
+    <rect
+       style="fill:#ffffff;stroke-width:0.499999;fill-opacity:1"
+       id="rect1"
+       width="80.757484"
+       height="101.20958"
+       x="-0.080838323"
+       y="-0.080838323" />
+  </g>
   <g
      inkscape:label="Card Back"
      inkscape:groupmode="layer"
      id="layer1"
      export-layer-combo="back,visible;front,hidden;front-extra,hidden"
      style="display:none">
-    <text
-       xml:space="preserve"
-       style="font-size:16.9333px;line-height:0;font-family:Anta;-inkscape-font-specification:'Anta, Normal';fill:#000000;fill-opacity:1;stroke-width:0.499999"
-       x="21.341318"
-       y="91.994011"
-       id="text1"><tspan
-         sodipodi:role="line"
-         id="tspan1"
-         style="fill:#000000;fill-opacity:1;stroke-width:0.5"
-         x="21.341318"
-         y="91.994011">Back</tspan></text>
+    <g
+       inkscape:groupmode="layer"
+       id="layer16"
+       inkscape:label="Back Combos"
+       export-layer-combo="back,combo-children">
+      <g
+         inkscape:groupmode="layer"
+         id="layer14"
+         inkscape:label="BackA"
+         style="display:none">
+        <text
+           xml:space="preserve"
+           style="font-size:16.9333px;line-height:0;font-family:Anta;-inkscape-font-specification:'Anta, Normal';display:inline;fill:#000000;fill-opacity:1;stroke-width:0.499999"
+           x="13.014971"
+           y="91.91317"
+           id="text1"><tspan
+             sodipodi:role="line"
+             id="tspan1"
+             style="fill:#000000;fill-opacity:1;stroke-width:0.5"
+             x="13.014971"
+             y="91.91317">Back A</tspan></text>
+      </g>
+      <g
+         inkscape:groupmode="layer"
+         id="layer15"
+         inkscape:label="BackB"
+         style="display:inline">
+        <text
+           xml:space="preserve"
+           style="font-size:16.9333px;line-height:0;font-family:Anta;-inkscape-font-specification:'Anta, Normal';display:inline;fill:#000000;fill-opacity:1;stroke-width:0.499999"
+           x="12.026295"
+           y="89.395721"
+           id="text1-25"><tspan
+             sodipodi:role="line"
+             id="tspan1-5"
+             style="fill:#000000;fill-opacity:1;stroke-width:0.5"
+             x="12.026295"
+             y="89.395721">Back B</tspan></text>
+      </g>
+    </g>
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="CardFront"
-     export-layer-combo="back,hidden">
+     export-layer-combo="back,hidden;front,visible;front-extra,visible"
+     style="display:none">
     <g
        inkscape:groupmode="layer"
        id="layer3"
