@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="80mm"
+   height="100mm"
+   viewBox="0 0 80 100"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="play-cards.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#252525"
+     inkscape:document-units="mm"
+     inkscape:zoom="3.2729938"
+     inkscape:cx="97.464284"
+     inkscape:cy="214.02424"
+     inkscape:window-width="3840"
+     inkscape:window-height="2054"
+     inkscape:window-x="2549"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer13" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Card Back"
+     inkscape:groupmode="layer"
+     id="layer1"
+     export-layer-combo="back,visible;front,hidden;front-extra,hidden"
+     style="display:none">
+    <text
+       xml:space="preserve"
+       style="font-size:16.9333px;line-height:0;font-family:Anta;-inkscape-font-specification:'Anta, Normal';fill:#000000;fill-opacity:1;stroke-width:0.499999"
+       x="21.341318"
+       y="91.994011"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.5"
+         x="21.341318"
+         y="91.994011">Back</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="CardFront"
+     export-layer-combo="back,hidden">
+    <g
+       inkscape:groupmode="layer"
+       id="layer3"
+       inkscape:label="Extra Cards"
+       export-layer-combo="front,hidden;front-extra,combo-children">
+      <g
+         inkscape:groupmode="layer"
+         id="layer13"
+         inkscape:label="Joker">
+        <text
+           xml:space="preserve"
+           style="font-size:16.9333px;line-height:0;font-family:Anta;-inkscape-font-specification:'Anta, Normal';fill:#000000;fill-opacity:1;stroke-width:0.499999"
+           x="20.694611"
+           y="43.652691"
+           id="text9"><tspan
+             sodipodi:role="line"
+             id="tspan9"
+             style="stroke-width:0.5"
+             x="20.694611"
+             y="43.652691">Joker</tspan></text>
+      </g>
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="layer4"
+       inkscape:label="Suits"
+       export-layer-combo="front,combo-children;front-extra,hidden">
+      <g
+         inkscape:groupmode="layer"
+         id="layer9"
+         inkscape:label="Diamonds"
+         style="display:none">
+        <text
+           xml:space="preserve"
+           style="font-size:16.9333px;line-height:0;font-family:Anta;-inkscape-font-specification:'Anta, Normal';fill:#000000;fill-opacity:1;stroke-width:0.499999"
+           x="64.023949"
+           y="16.167664"
+           id="text8"><tspan
+             sodipodi:role="line"
+             id="tspan8"
+             style="stroke-width:0.5"
+             x="64.023949"
+             y="16.167664">D</tspan></text>
+      </g>
+      <g
+         inkscape:groupmode="layer"
+         id="layer10"
+         inkscape:label="Spades"
+         style="display:none">
+        <text
+           xml:space="preserve"
+           style="font-size:16.9333px;line-height:0;font-family:Anta;-inkscape-font-specification:'Anta, Normal';fill:#000000;fill-opacity:1;stroke-width:0.499999"
+           x="65.964073"
+           y="14.712575"
+           id="text7"><tspan
+             sodipodi:role="line"
+             id="tspan7"
+             style="stroke-width:0.5"
+             x="65.964073"
+             y="14.712575">S</tspan></text>
+      </g>
+      <g
+         inkscape:groupmode="layer"
+         id="layer11"
+         inkscape:label="Clubs"
+         style="display:none">
+        <text
+           xml:space="preserve"
+           style="font-size:16.9333px;line-height:0;font-family:Anta;-inkscape-font-specification:'Anta, Normal';fill:#000000;fill-opacity:1;stroke-width:0.499999"
+           x="68.227547"
+           y="14.712575"
+           id="text6"><tspan
+             sodipodi:role="line"
+             id="tspan6"
+             style="stroke-width:0.5"
+             x="68.227547"
+             y="14.712575">C</tspan></text>
+      </g>
+      <g
+         inkscape:groupmode="layer"
+         id="layer12"
+         inkscape:label="Hearts"
+         style="display:none">
+        <text
+           xml:space="preserve"
+           style="font-size:16.9333px;line-height:0;font-family:Anta;-inkscape-font-specification:'Anta, Normal';fill:#000000;fill-opacity:1;stroke-width:0.499999"
+           x="65.802399"
+           y="15.197604"
+           id="text5"><tspan
+             sodipodi:role="line"
+             id="tspan5"
+             style="stroke-width:0.5"
+             x="65.802399"
+             y="15.197604">H</tspan></text>
+      </g>
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="layer5"
+       inkscape:label="Face Cards"
+       export-layer-combo="front,combo-children;front-extra,hidden">
+      <g
+         inkscape:groupmode="layer"
+         id="layer6"
+         inkscape:label="Jack"
+         style="display:none">
+        <text
+           xml:space="preserve"
+           style="font-size:16.9333px;line-height:0;font-family:Anta;-inkscape-font-specification:'Anta, Normal';fill:#000000;fill-opacity:1;stroke-width:0.499999"
+           x="35.488022"
+           y="31.931139"
+           id="text4"><tspan
+             sodipodi:role="line"
+             id="tspan4"
+             style="stroke-width:0.5"
+             x="35.488022"
+             y="31.931139">J</tspan></text>
+      </g>
+      <g
+         inkscape:groupmode="layer"
+         id="layer7"
+         inkscape:label="Queen"
+         style="display:none">
+        <text
+           xml:space="preserve"
+           style="font-size:16.9333px;line-height:0;font-family:Anta;-inkscape-font-specification:'Anta, Normal';fill:#000000;fill-opacity:1;stroke-width:0.499999"
+           x="33.952095"
+           y="35.811375"
+           id="text3"><tspan
+             sodipodi:role="line"
+             id="tspan3"
+             style="stroke-width:0.5"
+             x="33.952095"
+             y="35.811375">Q</tspan></text>
+      </g>
+      <g
+         inkscape:groupmode="layer"
+         id="layer8"
+         inkscape:label="King"
+         style="display:none">
+        <text
+           xml:space="preserve"
+           style="font-size:16.9333px;line-height:0;font-family:Anta;-inkscape-font-specification:'Anta, Normal';fill:#000000;fill-opacity:1;stroke-width:0.499999"
+           x="33.628742"
+           y="45.3503"
+           id="text2"><tspan
+             sodipodi:role="line"
+             id="tspan2"
+             style="stroke-width:0.5"
+             x="33.628742"
+             y="45.3503">K</tspan></text>
+      </g>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:16.9333px;line-height:0;font-family:Anta;-inkscape-font-specification:'Anta, Normal';display:inline;fill:#000000;fill-opacity:1;stroke-width:0.499999"
+       x="20.147539"
+       y="88.425667"
+       id="text1-2"><tspan
+         sodipodi:role="line"
+         id="tspan1-4"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.5"
+         x="20.147539"
+         y="88.425667">Front</tspan></text>
+  </g>
+</svg>

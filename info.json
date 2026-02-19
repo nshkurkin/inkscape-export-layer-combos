@@ -1,0 +1,67 @@
+{
+  "id": "com.ftlgoats.effect.combolayers",
+  "author": "Nikolai Shkurkin",
+  "name": "Export Layer Combos",
+  "type": "application/zip",
+  "license": "MIT",
+  "icon": "",
+  "summary": "Exports Combinations of layers.\n",
+  "links": {
+    "html": "https://github.com/nshkurkin/inkscape-export-layer-combos/",
+    "json": "https://raw.githubusercontent.com/nshkurkin/inkscape-export-layer-combos/main/info.json",
+    "file": "https://github.com/nshkurkin/inkscape-export-layer-combos/releases/download/latest/com.ftlgoats.combo.layers.zip"
+  },
+  "verified": true,
+  "stats": {
+    "liked": 0,
+    "downloaded": 0,
+    "revisions": 1,
+    "extra": 0
+  },
+  "dates": {
+    "created": "2021-09-14T16:00:33+00:00",
+    "edited": "2026-02-18T08:13:14.550250+00:00"
+  },
+  "Inkscape Version": [
+    "1.2",
+    "1.3"
+  ],
+  "Platform": [
+    "linux",
+    "os x",
+    "windows"
+  ],
+  "Extension Type": [
+    "render"
+  ],
+  "previous": {
+    "Inkscape Version": [
+      "1.2",
+      "1.2",
+      "1.2",
+      "1.2.1",
+      "1.2.1",
+      "1.2.1"
+    ],
+    "Platform": [
+      "linux",
+      "linux",
+      "linux",
+      "os x",
+      "os x",
+      "os x",
+      "windows",
+      "windows",
+      "windows"
+    ],
+    "Extension Type": [
+      "render",
+      "render",
+      "render"
+    ]
+  },
+  "files": [
+    "inkscape-export-layer-combos\\export_layer_combos.inx",
+    "inkscape-export-layer-combos\\export_layer_combos.py"
+  ]
+}
